@@ -1,0 +1,5 @@
+backup_android_*
+*.cache
+*.cache-e
+*.output
+*.output-e
