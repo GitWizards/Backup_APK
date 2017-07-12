@@ -1,7 +1,5 @@
 # Backup APK by ADB
 
-![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/linux.png?raw=true "linux") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/osx.png?raw=true "mac") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/windows.png?raw=true "windows")
-
 ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/version_v1/img/1.png?raw=true "Splashscreen")
 Lo scopo di questo progetto è quello di fare un Backup/Ripristino delle proprie Applicazioni dentro il proprio dispositivo senza limiti e senza l'uso dei permessi di root. 
 
@@ -19,6 +17,8 @@ Per i report usate la mail theplayergame97@gmail.com
 
 ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/version_v1/img/2.png?raw=true "Avvio script, Avvio Backup")
 
+* ### OS Supportati: ###
+![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/linux.png?raw=true "linux") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/osx.png?raw=true "mac") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/windows.png?raw=true "windows")
 
 # Dona per il progetto
 Per la creazione di questo progetto è stato investito del tempo, se ritieni che sia utile dona allo sviluppatore.
