@@ -43,7 +43,10 @@ function display_menu {
     then
         clear ; rm 21
     else
+        clear ; rm 21
         echo "Versione Android non supportata"
+        echo "Versione Android non supportata" > log.txt
+        exit
     fi
 
     PS3='Quale operazione vuoi fare?: '
@@ -87,7 +90,8 @@ function display_menu {
 
                     replace=$(sed 's/package://g' <<< $print1)
                     replace1=$(sed 's/package:\/data\/app\///g' <<< $print1)
-
+                    
+                    SECONDS=0
                     echo "Backup ${replace//\/base.apk} in..."
 
                     ./$1/adb pull $replace ./"backup_apk_`date "+%d-%m-%Y"`/$p"/$replace
@@ -97,7 +101,9 @@ function display_menu {
                 fi  
             done
 
-            echo "Backup Completato"
+            duration=$SECONDS
+            echo ""
+            echo "Backup Completato in $(($duration / 60)) minuti e $(($duration % 60)) secondi."
             ;;
 
         "Ripristino APK")
@@ -105,6 +111,7 @@ function display_menu {
             totaline=$(wc -l ./ripristina_apk.info)
             totalinec="${totaline// .\/\ripristina_apk.info}"
 
+            SECONDS=0
             for (( i=1; i<=$totalinec; i++))
             do
                 print=$(sed -n $i'p' ./ripristina_apk.info)
@@ -112,11 +119,13 @@ function display_menu {
                 ./$1/adb install $print
             done
 
-            echo "Ripristino Completato"
+            duration=$SECONDS
+            echo ""
+            echo "Ripristino Completato in $(($duration / 60)) minuti e $(($duration % 60)) secondi."
             ;;
 
         "Esci")
-            break
+            exit
             ;;
 
         *)
