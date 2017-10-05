@@ -125,7 +125,7 @@ function display_menu {
             ;;
 
         "Esci")
-            exit
+            exit 0
             ;;
 
         *)
@@ -155,7 +155,7 @@ then
         display_menu 'linux32'
     fi
 
-    elif [[ "$OSTYPE" == "darwin16" ]]
+    elif [[ "$OSTYPE" == "darwin"* ]]
     then
         # Mac OSX
         backup_apk 'macos'
