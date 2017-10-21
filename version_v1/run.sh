@@ -34,11 +34,20 @@ function backup_apk {
 
     #Versione Android
     version=$(./$1/adb shell getprop ro.build.version.sdk)
+
+    #Check Android found
+    check=$(./$1/adb devices)
 }
 
 
 # Menu principale
 function display_menu {
+    if ! [[ ${check//List of devices attached} == *"device"* ]]
+    then
+    clear ; echo "Dispositivo non trovato!"
+    exit;
+    fi
+
     if [ $version >> 21 ]
     then
         clear ; rm 21
