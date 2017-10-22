@@ -17,6 +17,12 @@ Per i report usate la mail theplayergame97@gmail.com
 
 ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/version_v1/img/2.png?raw=true "Avvio script, Avvio Backup")
 
+* ### Device testati: ###
+	* 📱OnePlus One - 8.0 - LineageOS 15(Beta)
+	* 📱Nexus 4 - 7.1.1 - SlimRom
+	* ⌚️LG G Watch - 7.1.1 - Wear 2.0(Port)
+
+
 * ### OS Supportati: ###
 ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/linux.png?raw=true "linux") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/osx.png?raw=true "mac") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/windows.png?raw=true "windows")
 

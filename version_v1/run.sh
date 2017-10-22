@@ -15,7 +15,7 @@ function backup_apk {
     echo "                                                          "
     echo "                __  _                                     "
     echo "               / _|| |                                    "
-    echo "   ___   ___  | |_ | |_ __      __ __ _  _ __  ___        "
+    echo "   ___   ___  | |_ | |_ __      __ ____  ____  ___        "
     echo "  / __| / _ \ |  _|| __|\ \ /\ / // _  ||  __|/ _ "'\'"   "
     echo "  "'\'"__ \| |_| || |  | |_  \ V  V /| (_| || |  |  __/   "
     echo "  |___/ \___/ |_|   \__|  \_/\_/  \____||_|   \___|       "
@@ -32,11 +32,15 @@ function backup_apk {
     # Clean
     rm -f ./$1/.output 2>/dev/null
 
-    #Versione Android
+    # Versione Android
     version=$(./$1/adb shell getprop ro.build.version.sdk)
-
-    #Check Android found
+    version="${version/$'\r'/}"
+        
+    # Check Android found
     check=$(./$1/adb devices)
+
+    # Check device is phone or watch
+    watch=$(./$1/adb shell getprop | grep "characteristics")
 }
 
 
@@ -44,17 +48,17 @@ function backup_apk {
 function display_menu {
     if ! [[ ${check//List of devices attached} == *"device"* ]]
     then
-    clear ; echo "Dispositivo non trovato!"
+    clear ; echo "Dispositivo non trovato o offline!"
     exit;
     fi
 
-    if [ $version >> 21 ]
+    if [ "$version" -ge 25 ]
     then
-        clear ; rm 21
+        clear
     else
-        clear ; rm 21
-        echo "Versione Android non supportata"
-        echo "Versione Android non supportata" > log.txt
+        clear
+        echo "Versione Android ($version) non supportata"
+        echo "Versione Android ($version) non supportata" > log.txt
         exit
     fi
 
@@ -66,6 +70,11 @@ function display_menu {
         case $opt in
         "Backup APK")
             clear
+            SECONDS=0
+            if [[ ${watch} == *"watch"* ]]
+            then
+            ./$1/adb shell settings put global airplane_mode_on 1
+            fi
 
             # Elimino il file di ripristino
             rm -f ripristina_apk.info 2>/dev/null
@@ -83,33 +92,38 @@ function display_menu {
 
             # Crea cartella backup
             mkdir backup_apk_`date "+%d-%m-%Y"`/$p 2>/dev/null
-
+            
             for (( i=1; i<=$totalinec; i++))
             do
-                print=$(sed -n $i'p' ./$1/.output)
+                # Seleziona il Package Name (eg. com.android) dell'applicazione
+                package=$(sed -n $i'p' ./$1/.output)
+                package=$(echo $package|tr -d '\r')
 
-                #Individua la posizione esatta dell'APK
-                print1=$(./$1/adb shell pm path $print)
+                # Individua la posizione esatta dell'applicazione
+                address=$(./$1/adb shell pm path $package)
+                address="${address/package:/}"
+                
+                # Indica la cartella di appartenenza dell'applicazione
+                array=$(echo $address| cut -d'/' -f 2)
 
-                IFS='/'
-                array=( $print1 )
-                if [ "${array[1]}" == "data" ]
+                if [ "$array" == "data" ]
                 then
-                    IFS=''
-
-                    replace=$(sed 's/package://g' <<< $print1)
-                    replace1=$(sed 's/package:\/data\/app\///g' <<< $print1)
-                    
-                    SECONDS=0
-                    echo "Backup ${replace//\/base.apk} in..."
-
-                    ./$1/adb pull $replace ./"backup_apk_`date "+%d-%m-%Y"`/$p"/$replace
-                    echo
-                    ls=$(ls `pwd`"/backup_apk_`date "+%d-%m-%Y"`$p$replace") 
-                    echo $ls >> ripristina_apk.info
-                fi  
+                    if [ "$version" -ge 25 ]
+                    then
+                        echo "Start"
+                        echo "Backup $package in..."
+                        ./$1/adb pull $address ./"backup_apk_`date "+%d-%m-%Y"`/$p"/$address
+                        echo
+                        ls=$(ls "./backup_apk_`date "+%d-%m-%Y"`$p$address") 
+                        echo $ls >> ripristina_apk.info
+                    fi
+                fi
             done
-
+            
+            
+            #Disable airplane mode_on
+            ./$1/adb shell settings put global airplane_mode_on 0
+            
             duration=$SECONDS
             echo ""
             echo "Backup Completato in $(($duration / 60)) minuti e $(($duration % 60)) secondi."
@@ -117,10 +131,10 @@ function display_menu {
 
         "Ripristino APK")
             clear
+            SECONDS=0
             totaline=$(wc -l ./ripristina_apk.info)
             totalinec="${totaline// .\/\ripristina_apk.info}"
 
-            SECONDS=0
             for (( i=1; i<=$totalinec; i++))
             do
                 print=$(sed -n $i'p' ./ripristina_apk.info)
