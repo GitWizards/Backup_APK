@@ -18,11 +18,20 @@ Per i report usate la mail theplayergame97@gmail.com
 ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/version_v1/img/2.png?raw=true "Avvio script, Avvio Backup")
 
 * ### Device testati: ###
-	* 📱OnePlus One - 8.0 - LineageOS 15(Beta)
+  * ##### Smartphone #####
+    * 📱OnePlus One - 8.0 - LineageOS 15(Beta)
 	* 📱Nexus 4 - 7.1.1 - SlimRom
 	* 📱Deco 77X - 5.1.1 - Exodus(Unofficial)
 	* 📱Huawei Y300 - 4.4.4 - CyanogenMod 11(Unofficial)
+	* 📱Nexus 4 - 4.2.2 - AOSP
+	* 📱Huawei Y300 - 4.1.2 - CyanogenMod 10(Unofficial)
+  * ##### Tablet #####
+	* 📱Deco 791 - 5.1.1 - AOSP
+  * ##### Smartwatch #####
 	* ⌚️LG G Watch - 7.1.1 - Wear 2.0(Port)
+
+* ### Adb Revision: ###
+  * ##### Revision 26.0.1 (September 2017) #####
 
 
 * ### OS Supportati: ###

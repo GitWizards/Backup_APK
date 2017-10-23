@@ -52,7 +52,7 @@ function display_menu {
     exit;
     fi
 
-    if [ "$version" -ge 19 ]
+    if [ "$version" -ge 16 ]
     then
         clear
     else
@@ -119,7 +119,7 @@ function display_menu {
                         ls=$(ls "./backup_apk_`date "+%d-%m-%Y"`$p$address") 
                         echo $ls >> ripristina_apk.info
                     fi
-                    if [ "$version" -ge 19 ]
+                    if [ "$version" -le 19 ]
                     then
                         address=$(echo $address|tr -d '\r')
 
