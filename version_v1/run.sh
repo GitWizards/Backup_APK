@@ -52,7 +52,7 @@ function display_menu {
     exit;
     fi
 
-    if [ "$version" -ge 22 ]
+    if [ "$version" -ge 19 ]
     then
         clear
     else
@@ -70,6 +70,7 @@ function display_menu {
         case $opt in
         "Backup APK")
             clear
+            echo Avvio backup...
             SECONDS=0
             if [[ ${watch} == *"watch"* ]]
             then
@@ -118,11 +119,22 @@ function display_menu {
                         ls=$(ls "./backup_apk_`date "+%d-%m-%Y"`$p$address") 
                         echo $ls >> ripristina_apk.info
                     fi
+                    if [ "$version" -ge 19 ]
+                    then
+                        address=$(echo $address|tr -d '\r')
+
+                        echo "Backup $package in..."
+                        ./$1/adb pull $address ./"backup_apk_`date "+%d-%m-%Y"`/$p"
+                        echo
+                        address="${address/\/data\/app\/}"
+                        ls=$(ls "./backup_apk_`date "+%d-%m-%Y"`$p/$address") 
+                        echo $ls >> ripristina_apk.info
+                    fi
                 fi
             done
             
             
-            #Disable airplane mode_on
+            #Enable airplane mode_on
             ./$1/adb shell settings put global airplane_mode_on 0
             
             duration=$SECONDS
@@ -132,20 +144,27 @@ function display_menu {
 
         "Ripristino APK")
             clear
-            SECONDS=0
-            totaline=$(wc -l ./ripristina_apk.info)
-            totalinec="${totaline// .\/\ripristina_apk.info}"
+            echo Avvio ripristino...
+            file="./ripristina_apk.info"
+            if [ -f "$file" ]
+            then
+                SECONDS=0
+                totaline=$(wc -l ./ripristina_apk.info)
+                totalinec="${totaline// .\/\ripristina_apk.info}"
 
-            for (( i=1; i<=$totalinec; i++))
-            do
-                print=$(sed -n $i'p' ./ripristina_apk.info)
+                for (( i=1; i<=$totalinec; i++))
+                do
+                    print=$(sed -n $i'p' ./ripristina_apk.info)
 
-                ./$1/adb install $print
-            done
+                    ./$1/adb install $print
+                done
 
-            duration=$SECONDS
-            echo ""
-            echo "Ripristino Completato in $(($duration / 60)) minuti e $(($duration % 60)) secondi."
+                duration=$SECONDS
+                echo ""
+                echo "Ripristino Completato in $(($duration / 60)) minuti e $(($duration % 60)) secondi."
+            else
+                echo File di ripristino non trovato!
+            fi
             ;;
 
         "Esci")
