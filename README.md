@@ -20,6 +20,7 @@ Per i report usate la mail theplayergame97@gmail.com
 * ### Device testati: ###
 	* 📱OnePlus One - 8.0 - LineageOS 15(Beta)
 	* 📱Nexus 4 - 7.1.1 - SlimRom
+	* 📱Deco 77X - 5.1.1 - Exodus(Unofficial)
 	* ⌚️LG G Watch - 7.1.1 - Wear 2.0(Port)
 
 

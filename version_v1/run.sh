@@ -52,7 +52,7 @@ function display_menu {
     exit;
     fi
 
-    if [ "$version" -ge 25 ]
+    if [ "$version" -ge 22 ]
     then
         clear
     else
@@ -108,9 +108,10 @@ function display_menu {
 
                 if [ "$array" == "data" ]
                 then
-                    if [ "$version" -ge 25 ]
+                    if [ "$version" -ge 22 ]
                     then
-                        echo "Start"
+                        address=$(echo $address|tr -d '\r')
+
                         echo "Backup $package in..."
                         ./$1/adb pull $address ./"backup_apk_`date "+%d-%m-%Y"`/$p"/$address
                         echo
