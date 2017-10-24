@@ -25,8 +25,8 @@ Lo scopo di questo progetto è quello di fare un Backup/Ripristino delle proprie
   * ##### Smartwatch #####
 	* ⌚️LG G Watch - 7.1.1 - Wear 2.0(Port)
 
-* ### Adb Revision: ###
-  * ##### Revision 26.0.1 (September 2017) #####
+* ### ADB Version: ###
+  * ##### Android Debug Bridge version 1.0.32 #####
 
 * ### Versioni Android supportate ###
   ![Android_8.0 support](https://img.shields.io/badge/Android_8.0-support-brightgreen.svg) ![Android_4.1.2 support](https://img.shields.io/badge/Android_4.1.2-support-brightgreen.svg) ![Android_<=_4.1.1 Not_tested](https://img.shields.io/badge/Android_<=_4.1.1-Not_tested-red.svg)
