@@ -3,11 +3,6 @@
 ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/version_v1/img/1.png?raw=true "Splashscreen")
 Lo scopo di questo progetto è quello di fare un Backup/Ripristino delle proprie Applicazioni dentro il proprio dispositivo senza limiti e senza l'uso dei permessi di root. 
 
-⚠ !!!ATTENZIONE!!! ⚠
-
-Il progetto è in fase di Beta perciò ci potrebbero esserci dei problemi.
-Per i report usate la mail theplayergame97@gmail.com
-
 * ### Problemi riscontrati: ###
 	* Dispositivi NoRoot con Linux
 	* Dispositivi Asus
@@ -33,9 +28,10 @@ Per i report usate la mail theplayergame97@gmail.com
 * ### Adb Revision: ###
   * ##### Revision 26.0.1 (September 2017) #####
 
-
+* ### Versioni Android supportate ###
+  ![Android_8.0 support](https://img.shields.io/badge/Android_8.0-support-brightgreen.svg) ![Android_4.1.2 support](https://img.shields.io/badge/Android_4.1.2-support-brightgreen.svg) ![Android_<=_4.1.1 Not_tested](https://img.shields.io/badge/Android_<=_4.1.1-Not_tested-red.svg)
 * ### OS Supportati: ###
-![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/linux.png?raw=true "linux") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/osx.png?raw=true "mac") ![Alt text](https://raw.githubusercontent.com/Fast0n/Backup_APK/master/os_support/windows.png?raw=true "windows")
+   ![Linux Support](https://img.shields.io/badge/Linux-Support-brightgreen.svg) ![macOS Support](https://img.shields.io/badge/macOS-Support-brightgreen.svg) ![Windows Not_tested](https://img.shields.io/badge/Windows-Not_tested-red.svg)
 
 # Dona per il progetto
 Per la creazione di questo progetto è stato investito del tempo, se ritieni che sia utile dona allo sviluppatore.
