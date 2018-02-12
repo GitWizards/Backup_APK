@@ -37,4 +37,4 @@ Lo scopo di questo progetto è quello di fare un Backup/Ripristino delle proprie
 Per la creazione di questo progetto è stato investito del tempo, se ritieni che sia utile dona allo sviluppatore.
 
 
-[![gitcheese.com](https://s3.amazonaws.com/gitcheese-ui-master/images/badge.svg)](https://www.gitcheese.com/donate/users/5260133/repos/97053870)
+[![Donate](https://img.shields.io/badge/Dona-PayPal-blue.svg)](https://www.paypal.me/fast0n/)
